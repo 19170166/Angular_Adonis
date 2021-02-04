@@ -9,6 +9,8 @@ import { InsertarComponent } from './Componentes/insertar/insertar.component';
 import { PrincipalComponent } from './Componentes/principal/principal.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
+import { EliminarComponent } from './Componentes/eliminar/eliminar.component';
+import { ModificarComponent } from './Componentes/modificar/modificar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { InicioComponent } from './Componentes/inicio/inicio.component';
     InsertarComponent,
     PrincipalComponent,
     PageNotFoundComponent,
-    InicioComponent
+    InicioComponent,
+    EliminarComponent,
+    ModificarComponent
   ],
   imports: [
     BrowserModule,
