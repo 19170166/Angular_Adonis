@@ -8,6 +8,7 @@ import { RegistroComponent } from './Componentes/registro/registro.component';
 import { InsertarComponent } from './Componentes/insertar/insertar.component';
 import { PrincipalComponent } from './Componentes/principal/principal.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
+import { InicioComponent } from './Componentes/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-fou
     RegistroComponent,
     InsertarComponent,
     PrincipalComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
