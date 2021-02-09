@@ -1,1 +1,22 @@
 <p>login works!</p>
+<div class="container">
+    <h2>Iniciar Sesion</h2>
+    <div class='m-4'>
+        <form class="form-group" [formGroup]='LoginForm'>
+            <div class="form-row">
+                <label class='m-2'>Correo</label>
+                <input class="m-2 form-control col-md-4 border border-dark" formControlName='correo'>
+            </div>
+            <div class="form-row">
+                <label class='m-2'>Password</label>
+                <input class="m-2 form-control col-md-4 border border-dark" type='password' formControlName='password'>
+            </div>
+        </form>
+    </div>
+    <button class='btn btn-success' (click)="loginuser()">Iniciar Sesion</button>
+    <p>{{token.token}}</p>
+    <p>{{data.Persona.nombre}}</p>
+    <ul>
+        <li *ngFor="let person of datas.Personas">{{person.nombre}}</li>
+    </ul>
+</div>

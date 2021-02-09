@@ -1,1 +1,21 @@
 <p>registro works!</p>
+<div class="container">
+    <h2>Registro</h2>
+    <div class='m-4'>
+        <form class="form-group" [formGroup]="PersonaForm">
+            <div class="form-row">
+                <label class='m-2' type="text">Nombre</label>
+                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'nombre'>
+            </div>
+            <div class="form-row">
+                <label class='m-2'>Correo</label>
+                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'correo'>
+            </div>
+            <div class="form-row">
+                <label class='m-2'>Password</label>
+                <input class="m-2 form-control col-md-4 border border-dark" type='password' formControlName = 'password'>
+            </div>
+        </form>
+    </div>
+    <button class='btn btn-success' (click)="registrouser()">Registrarse</button>
+</div>

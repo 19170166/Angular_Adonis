@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-fou
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { EliminarComponent } from './Componentes/eliminar/eliminar.component';
 import { ModificarComponent } from './Componentes/modificar/modificar.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ModificarComponent } from './Componentes/modificar/modificar.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
