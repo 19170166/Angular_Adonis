@@ -15,8 +15,8 @@
     </div>
     <button class='btn btn-success' (click)="loginuser()">Iniciar Sesion</button>
     <p>{{token.token}}</p>
-    <p>{{data.Persona.nombre}}</p>
-    <ul>
-        <li *ngFor="let person of datas.Personas">{{person.nombre}}</li>
+    <p>{{data.data.nombre}}</p>
+    <ul class='list-group'>
+        <li *ngFor="let person of datas.data" class='list-group-item'>{{person.nombre}} edad: {{person.edad}}</li>
     </ul>
 </div>
