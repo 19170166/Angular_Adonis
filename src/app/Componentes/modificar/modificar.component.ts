@@ -21,11 +21,17 @@ export class ModificarComponent implements OnInit {
 
   ModificarForm = new FormGroup({
     id: new FormControl(''),
-    nombre_producto: new FormControl('')
+    Nombre: new FormControl(''),
+    Caducidad: new FormControl('')
   })
 
   PostComent = new FormGroup({
-    comentario: new FormControl('')
+    Comentario: new FormControl('')
+  })
+
+  PostProd = new FormGroup({
+    Nombre:new FormControl(''),
+    Caducidad: new FormControl('')
   })
 
   constructor(private datosvc:ServicioDatosService) { }
@@ -38,29 +44,44 @@ export class ModificarComponent implements OnInit {
   onSelect(pro:Producto){
     this.prodselect = pro;
     this.id = pro.id;
-    this.nomprod = pro.nombre_producto;
+    this.nomprod = pro.Nombre;
   }
 
-  getComentario(id){
-    this.datosvc.getComentario(id).subscribe(data =>{this.comentario = data
+  getComentario(pro:Producto){
+    this.datosvc.getComentario(pro.id).subscribe(data =>{this.comentario = data
     console.log(data)
-    this.idu = id})
+    this.onSelect(pro)})
   }
 
-  deleteProducto(id){
-    this.datosvc.deleteProducto(id).subscribe(data =>{console.log(data)})
+  deleteProducto(pro:Producto){
+    this.datosvc.deleteProducto(pro.id).subscribe(data =>{console.log(data)})
   }
 
   postComentario(){
 
     const com = {
-      comentario: this.PostComent.value.comentario,
-      usuario:1,
-      id_producto: this.idu
+      Comentario: this.PostComent.value.comentario,
+      producto_id: this.id
     }
     console.log(com)
     this.datosvc.postComentario(com).subscribe(data =>{console.log(com)
     })
   }
 
+  putProducto(){
+    console.log(this.ModificarForm.value)
+    this.datosvc.putProducto(this.ModificarForm.value,this.id).subscribe(data =>{console.log(this.ModificarForm.value)})
+  }
+
+  deleteComentario(id){
+    this.datosvc.deleteComentario(id).subscribe(data =>{console.log(data)})
+  }
+
+  postProd(){
+    const prod = {
+      Nombre:this.PostProd.value.Nombre,
+      Caducidad:this.PostProd.value.Caducidad
+    }
+    this.datosvc.postProducto(prod).subscribe(data=>{console.log(data)})
+  }
 }

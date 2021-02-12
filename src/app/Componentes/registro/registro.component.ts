@@ -14,9 +14,9 @@ export class RegistroComponent implements OnInit {
   //PasswordForm = new FormControl();
   
   PersonaForm = new FormGroup({
-    nombre: new FormControl(''),
-    correo: new FormControl(''),
-    password: new FormControl('')
+    Nombre: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required)
   })
   
   constructor(private datosvc: ServicioDatosService) { 

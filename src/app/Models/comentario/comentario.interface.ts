@@ -1,5 +1,6 @@
 export interface Comentario{
-    comentario?:string;
-    usuario?:number;
-    id_producto?:number;
+    id?:number;
+    Comentario?:string;
+    user_id?:number;
+    producto_id?:number;
 }

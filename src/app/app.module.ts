@@ -11,8 +11,15 @@ import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-fou
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { EliminarComponent } from './Componentes/eliminar/eliminar.component';
 import { ModificarComponent } from './Componentes/modificar/modificar.component';
-import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms'
+
+//importar servicio de cookies
+import {CookieService} from 'ngx-cookie-service'
+
+//Interceptors
+import {ServicioDatosService} from './Componentes/servicio-datos.service'
+import {InterceptorService} from './Componentes/Interceptors/interceptor.service'
 
 @NgModule({
   declarations: [
@@ -30,9 +37,20 @@ import {ReactiveFormsModule} from '@angular/forms'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  //importa el servicio con el auth
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServicioDatosService,
+      multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:InterceptorService,
+      multi: true
+    },CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

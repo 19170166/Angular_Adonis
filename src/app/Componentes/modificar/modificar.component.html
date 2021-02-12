@@ -1,26 +1,42 @@
-<p>modificar works!</p>
 
 <div class='container'>
-    <p>{{id}} {{nomprod}}</p>
+  <div class='row'>
+    <form [(formGroup)]='PostProd' class='form-group row m-2'>
+      <div class='form-row'>
+        <label class='m-2'>Nombre: <input formControlName='Nombre' class='form-control'></label>
+      </div>
+      <div>
+        <label class='m-2'>Caducidad: <input formControlName='Caducidad' class='form-control'></label>
+      </div>
+    </form>
+    <button class='btn btn-primary my-4' (click)='postProd()'>Agregar</button>
+  </div>
+</div>
+
+<div class='container'>
     <table class='table table-dark'>
         <thead>
             <th>Producto</th>
+            <th>Caducidad</th>
         </thead>
         <tbody>
-            <tr *ngFor="let prod of producto.Producto">
+            <tr *ngFor="let prod of producto.Productos">
                 <td>
-                    {{prod.nombre_producto}}
-                    <button (click)="onSelect(prod)" class='btn btn-primary float-right mx-2'
+                    {{prod.Nombre}}
+                </td>
+                <td>
+                  {{prod.Caducidad}}
+                  <button (click)="onSelect(prod)" class='btn btn-primary float-right mx-2'
                     data-target='#modificar' aria-controls="modificar" data-toggle='modal'>
                     Modificar
                     </button>
-                    <button (click)="deleteProducto(prod.id)" class='btn btn-danger float-right mx-2'>Eliminar</button>
-                    <button (click)="getComentario(prod.id)" class='btn btn-success float-right mx-2'
+                    <button (click)="deleteProducto(prod)" class='btn btn-danger float-right mx-2'>Eliminar</button>
+                    <button (click)="getComentario(prod)" class='btn btn-success float-right mx-2'
                     data-target='#isesion' aria-controls="isesion" data-toggle='modal'>
                         Ver Comentarios
                     </button>
                 </td>
-            </tr>
+            </tr> 
         </tbody>
     </table>
 </div>
@@ -36,14 +52,15 @@
         </div>
         <div class="modal-body">
           <div>
-            <div class="overflow-auto" style=" max-height: 800px;">
+            <div class="overflow-auto max-modal">
                 <div *ngFor='let com of comentario'>
                     <p class='text-secondary'> <b>{{com.nombre}}</b></p>
                     <p> {{com.comentario}}</p>
+                    <p (click)='deleteComentario(com.id)' class='text-danger float-right btn-borrar'>Borrar</p>
                 </div>
             </div>
             <form class='form-group row' [formGroup]='PostComent'>
-                <textarea class='form-control m-2' placeholder="Agregar Comentario" formControlName='comentario'>
+                <textarea type='text' class='form-control m-2' placeholder="Agregar Comentario" formControlName='Comentario'>
                 </textarea>
                 <button class='float-right btn btn-primary m-2' (click)='postComentario()'>Comentar</button>
                 <p>{{ModificarForm.value.comentario}}</p>
@@ -64,12 +81,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-2">
         <div>
-          <div class="overflow-auto" style=" max-height: 800px;">
-            <form class='form-group row' [formGroup]='PostComent'>
-              <input class='form-control m-2' placeholder='Nombre del Producto'>
+          <div class="overflow-auto" style="max-height: 800px;">
+            <form class='form-group row' [formGroup]='ModificarForm'>
+              <input type='text' class='form-control m-2 p-2' placeholder='Nombre del Producto' 
+              formControlName='Nombre' [(ngModel)]='nomprod'>
+              <button class='btn btn-primary float-right m-2 p-2'
+              (click)='putProducto()'>Guardar</button>
             </form>
+          </div>
         </div>
       </div>
     </div>

@@ -1,15 +1,14 @@
-<p>registro works!</p>
 <div class="container">
     <h2>Registro</h2>
     <div class='m-4'>
         <form class="form-group" [formGroup]="PersonaForm">
             <div class="form-row">
                 <label class='m-2' type="text">Nombre</label>
-                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'nombre'>
+                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'Nombre'>
             </div>
             <div class="form-row">
                 <label class='m-2'>Correo</label>
-                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'correo'>
+                <input class="m-2 form-control col-md-4 border border-dark" formControlName = 'email'>
             </div>
             <div class="form-row">
                 <label class='m-2'>Password</label>
@@ -17,5 +16,5 @@
             </div>
         </form>
     </div>
-    <button class='btn btn-success' (click)="registrouser()">Registrarse</button>
+    <button class='btn btn-success' type='submit' (click)="registrouser()">Registrarse</button>
 </div>

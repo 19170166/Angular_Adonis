@@ -1,7 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import {HttpClient, HttpClientModule,HttpHeaders} from '@angular/common/http';
 import {ServicioDatosService} from '../servicio-datos.service'
-import { FormControl, FormGroup } from '@angular/forms';
+import {InterceptorService} from '../Interceptors/interceptor.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service'
 
 @Component({
   selector: 'app-login',
@@ -15,23 +17,26 @@ export class LoginComponent implements OnInit {
   datas: any;
   data: any;
   token:any;
-  constructor(private datosvc:ServicioDatosService) { }
+  constructor(private datosvc:ServicioDatosService,private interceptor:InterceptorService,
+    private Cookie:CookieService) { }
   LoginForm = new FormGroup({
-    correo: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required)
   })
   ngOnInit(): void {
-    this.datosvc.getPersona().subscribe(data => {console.log(data)
-    this.data = data;})
 
-    this.datosvc.getPersonas().subscribe(data=> {console.log(data)
-    this.datas = data})
-    
   }
   loginuser(){
-    this.datosvc.login(this.LoginForm.value).subscribe(data=>{console.log(this.LoginForm.value)
+    this.datosvc.login(this.LoginForm.value).subscribe(data=>{
     this.token = data;
-    console.log(data)})
+    
+      if(this.token.token!=null){
+        console.log('cookie creada')
+        this.Cookie.set('token',this.token.token,2)
+      }
+
+    console.log(data)
+    this.interceptor.setToken()})
   }
 
 }

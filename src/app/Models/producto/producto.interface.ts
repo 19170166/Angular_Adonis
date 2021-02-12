@@ -1,4 +1,5 @@
 export interface Producto{
-    id?: number;
-    nombre_producto?: string;
+    id?:number;
+    Nombre?: string;
+    Caducidad?:string;
 }
