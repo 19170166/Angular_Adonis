@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class InterceptorService implements HttpInterceptor {
   token: any;
+  logeado:boolean = false;
 
   constructor(private cookie:CookieService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,6 +23,12 @@ export class InterceptorService implements HttpInterceptor {
       headers
     })
 
+    if(!this.cookie.check('token')){
+      this.logeado = false;
+    }else{
+      this.logeado = true;
+    }
+
     return next.handle(reqclone).pipe(
       catchError(this.catcherror)
     )
@@ -33,8 +40,10 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   setToken(){
-    if(this.cookie.check('token')){
-      console.log('El token es: ',this.cookie.get('token'))
-    }
+    
+  }
+
+  logeo(estado:boolean){
+    return this.logeado = estado;
   }
 }

@@ -17,9 +17,11 @@ export class LoginComponent implements OnInit {
   datas: any;
   data: any;
   token:any;
+
   constructor(private datosvc:ServicioDatosService,private interceptor:InterceptorService,
     private Cookie:CookieService) { }
-  LoginForm = new FormGroup({
+  
+    LoginForm = new FormGroup({
     email: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required)
   })
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
       if(this.token.token!=null){
         console.log('cookie creada')
         this.Cookie.set('token',this.token.token,2)
+        this.interceptor.logeo(true)
+        window.location.reload()
       }
 
     console.log(data)

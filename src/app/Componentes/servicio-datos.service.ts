@@ -20,8 +20,8 @@ export class ServicioDatosService implements HttpInterceptor{
   private urlApi7 = this.url+'Actualizarprod/'
   private urlApi8 = this.url+'Mostrarprod'
   private urlApi9 = this.url+'Producto/'
-  private urlApi10 = 'http://127.0.0.1:8000/api/borrarproducto/'
-  private urlApi11 = 'http://127.0.0.1:8000/api/borrarcomentario/'
+  private urlApi10 = this.url+'Eliminarprod/'
+  private urlApi11 = this.url+'borrarcomentario/'
   
   httpHeader = new HttpHeaders({
     'Access-Control-Allow-Origin': '*',

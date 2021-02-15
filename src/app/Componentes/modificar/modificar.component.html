@@ -54,16 +54,17 @@
           <div>
             <div class="overflow-auto max-modal">
                 <div *ngFor='let com of comentario'>
-                    <p class='text-secondary'> <b>{{com.nombre}}</b></p>
-                    <p> {{com.comentario}}</p>
-                    <p (click)='deleteComentario(com.id)' class='text-danger float-right btn-borrar'>Borrar</p>
+                    <div class='container'>
+                      <p class='text-secondary'> <b>{{com.Nombre}}</b></p>
+                      <p> {{com.Comentario}}</p>
+                      <b (click)='deleteComentario(com.id)' class='text-danger float-right btn-borrar'>Borrar</b>
+                    </div>
                 </div>
             </div>
             <form class='form-group row' [formGroup]='PostComent'>
                 <textarea type='text' class='form-control m-2' placeholder="Agregar Comentario" formControlName='Comentario'>
                 </textarea>
                 <button class='float-right btn btn-primary m-2' (click)='postComentario()'>Comentar</button>
-                <p>{{ModificarForm.value.comentario}}</p>
             </form>
           </div>
         </div>

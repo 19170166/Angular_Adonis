@@ -1,9 +1,10 @@
 <nav class='navbar navbar-dark bg-dark'>
     <ul class='nav'>
-        <li class='nav-item'><h2 class='text-white'>Menu</h2></li>
+        <li class='nav-item'><h2 class='text-white' routerLink='inicio'>Menu</h2></li>
         <li class='nav-item'><a  class='nav-link text-white' routerLink='login'>Login</a></li>
         <li class='nav-item'><a  class='nav-link text-white' routerLink='registro'>Registrar</a></li>
-        <li class='nav-item'><a  class='nav-link text-white' routerLink='modificar'>Productos</a></li>
+        <li class='nav-item'><a  class='nav-link text-white' 
+            [ngClass]="logeado ? 'text-white':'disabled text-white-50'" routerLink='productos'>Productos</a></li>
     </ul>
 </nav>
 
