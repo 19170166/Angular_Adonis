@@ -19,6 +19,7 @@ export class ModificarComponent implements OnInit {
   comentario:any;
   comen:any;
   idu:any;
+  caducidad: string;
 
   ModificarForm = new FormGroup({
     id: new FormControl(''),
@@ -45,6 +46,7 @@ export class ModificarComponent implements OnInit {
     this.prodselect = pro;
     this.id = pro.id;
     this.nomprod = pro.Nombre;
+    this.caducidad = pro.Caducidad;
   }
 
   getProductos(){

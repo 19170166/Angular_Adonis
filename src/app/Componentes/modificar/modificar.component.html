@@ -56,7 +56,7 @@
                 <div *ngFor='let com of comentario'>
                     <div class='container'>
                       <p class='text-secondary'> <b>{{com.Nombre}}</b></p>
-                      <p> {{com.Comentario}}</p>
+                      <p> {{com.comentario}}</p>
                       <b (click)='deleteComentario(com.id)' class='text-danger float-right btn-borrar'>Borrar</b>
                     </div>
                 </div>
@@ -73,21 +73,24 @@
 </div>
 
 
+
 <div class="modal fade" id="modificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Comentarios</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body p-2">
+      <div class="modal-body">
         <div>
-          <div class="overflow-auto" style="max-height: 800px;">
+          <div class="overflow-auto max-modal">
             <form class='form-group row' [formGroup]='ModificarForm'>
               <input type='text' class='form-control m-2 p-2' placeholder='Nombre del Producto' 
               formControlName='Nombre' [(ngModel)]='nomprod'>
+              <input type='text' class='form-control m-2 p-2' placeholder='Nombre del Producto' 
+              formControlName='Caducidad' [(ngModel)]='caducidad'>
               <button class='btn btn-primary float-right m-2 p-2'
               (click)='putProducto()'>Guardar</button>
             </form>
